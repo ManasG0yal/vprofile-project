@@ -1,5 +1,6 @@
 version: '3.8'
 services:
+# it is the database services which we create here
   vprodb:
     build: 
       context: ./Docker-files/db
@@ -12,11 +13,13 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=vprodbpass
 
+# this is the memcache 
   vprocache01 :
     image: memcached
     ports:
       - "11211:11211"
   
+  # this is the rabbitmq
   vpromq01:
     image: rabbitmq
     ports:
@@ -25,6 +28,7 @@ services:
       -RABBITMQ_DEFAULT_USER = guest
       -RABBITMQ_DEFAULT_PASS = guest
 
+# this is the main application
   vproapp:
     build: 
       context: ./Docker-files/app
@@ -33,6 +37,7 @@ services:
     ports:
       - "8080:8080"
 
+# this is the nginx
   vproweb:
     build: 
       context: ./Docker-files/web
@@ -41,7 +46,7 @@ services:
     ports:
       - "80:80"
   
-
+# this is used to define your volumes
 volumes:
   vprodbdata: {}
 
