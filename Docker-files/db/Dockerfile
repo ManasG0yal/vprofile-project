@@ -1,5 +1,5 @@
 # using the base image of the mysql 
-FROM mysql:8.00.33
+FROM mysql:8.0.33
 # here we are creating some labels
 LABEL "project"="containerization-vprofile"
 LABEL "Author"="ManasG0yal"
