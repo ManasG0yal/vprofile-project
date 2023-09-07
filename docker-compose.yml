@@ -34,3 +34,18 @@ services:
       context: ./Docker-files/app
     image: manas2002goyal/vprofileapp
     container_name: vproapp
+    ports:
+      - "8080:8080"
+
+# this is the nginx
+  vproweb:
+    build:
+      context: ./Docker-files/web
+    image: manas2002goyal/vprofileweb
+    container_name: vproweb
+    ports:
+      - "80:80"
+
+# this is used to define your volumes
+volumes:
+  vprodbdata: {}
